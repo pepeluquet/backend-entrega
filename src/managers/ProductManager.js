@@ -19,22 +19,31 @@ class ProductManager {
 
     async getProductById(id) {
         const products = await this.getProducts()
-        return products.find(p => p.id === id)
+        return products.find(p => String(p.id) === String(id))
     }
 
     async addProduct(product) {
-        const products = await this.getProducts()
-        const newProduct = { ...product, id: this.generateUniqueId(products) }
-        products.push(newProduct)
-        await this.saveProducts(products)
-        return newProduct
+        const products = await this.getProducts();
+
+        // Validar código único
+        if (products.some(p => p.code === product.code)) {
+            throw new Error('El código del producto ya existe.');
+        }
+
+        // Generar ID único y numérico
+        const newId = this.generateUniqueId(products);
+        const newProduct = { ...product, id: newId };
+
+        products.push(newProduct);
+        await this.saveProducts(products);
+        return newProduct;
     }
 
     async updateProduct(id, updates) {
         const products = await this.getProducts()
-        const index = products.findIndex(p => p.id === id)
+        const index = products.findIndex(p => String(p.id) === String(id))
         if (index !== -1) {
-            products[index] = { ...products[index], ...updates, id: id }
+            products[index] = { ...products[index], ...updates, id: products[index].id }
             await this.saveProducts(products)
             return products[index]
         }
@@ -44,7 +53,7 @@ class ProductManager {
     async deleteProduct(id) {
         let products = await this.getProducts()
         const initialLength = products.length
-        products = products.filter(p => p.id !== id)
+        products = products.filter(p => String(p.id) !== String(id))
         if (products.length === initialLength) {
             throw new Error('Producto no encontrado para eliminar')
         }
@@ -56,7 +65,9 @@ class ProductManager {
     }
 
     generateUniqueId(products) {
-        return products.length > 0 ? (Math.max(...products.map(p => p.id)) + 1) : 1
+        // Asegura que todos los IDs sean numéricos y únicos
+        const ids = products.map(p => Number(p.id)).filter(id => !isNaN(id));
+        return ids.length > 0 ? Math.max(...ids) + 1 : 1;
     }
 }
 
