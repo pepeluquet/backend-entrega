@@ -71,4 +71,6 @@ class ProductManager {
     }
 }
 
+// const productManager = new ProductManager('./data/products.json')
+
 module.exports = ProductManager
