@@ -1,7 +1,6 @@
 const express = require('express')
-const ProductManager = require('../managers/ProductManager.js')
-
 const router = express.Router()
+const ProductManager = require('../managers/ProductManager.js')
 const productManager = new ProductManager('./data/products.json')
 
 // GET /api/products
