@@ -1,6 +1,6 @@
 class ProductServices {
-    constructor(productDao) {
-        this.productDao = productDao
+    constructor(productsDao) {
+        this.productsDao = productsDao
     }
 
     async getAllProducts() {
@@ -76,3 +76,5 @@ class ProductServices {
         return await this.productDao.deleteProduct(id)
     }
 }
+
+module.exports = ProductServices;

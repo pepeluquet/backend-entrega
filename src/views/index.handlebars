@@ -2,4 +2,19 @@
 <section>
     <h2>{{mensaje}}</h2>
     <p>Este es el contenido dinámico de la página principal.</p>
+
+    {{#if products.length}}
+        <ul>
+            {{#each products}}
+                <li style="{{#if oferta}}background: #ffeeba;{{/if}}">
+                    <strong>{{nombre}}</strong> - ${{precio}}
+                    {{#if oferta}}
+                        <span style="color: red; font-weight: bold;">En oferta!</span>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No hay productos disponibles en este momento.</p>
+    {{/if}}
 </section>

@@ -1,7 +1,7 @@
 const fs = require('fs').promises
 const crypto = require("crypto")
 
-class ProductManager {
+class ProductDao {
     constructor(filePath) {
         this.filePath = filePath
     }

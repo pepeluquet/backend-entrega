@@ -1,5 +1,5 @@
 const fs = require('fs').promises
-const ProductManager = require('./ProductManager.js')
+const ProductManager = require('../dao/products.dao.js')
 
 class CartManager {
     constructor(filePath) {

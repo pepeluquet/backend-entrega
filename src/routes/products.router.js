@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const config = require('../config.js')
-const ProductsDao = require(`../daos/products/${config.persistence}/products.dao.js`)
+const config = require('../config/config.js');
+const ProductsDao = require(`../dao/products.dao.js`)
 const ProductsServices = require('../services/products.services.js')
 const ProductsControllers = require('../controllers/products.controllers.js')
 
-const productsDao = new productsDao()
+const productsDao = new ProductsDao()
 const productsServices = new ProductsServices(productsDao)
 const productsControllers = new ProductsControllers(productsServices)
 
