@@ -15,6 +15,9 @@
                     <p><strong>Precio:</strong> ${{price}}</p>
                     <p><strong>Stock:</strong> {{stock}}</p>
                     <p><strong>Categoría:</strong> {{category}}</p>
+                    {{#if onSale}}
+                        <span style="color: green; font-weight: bold;">¡En oferta!</span>
+                    {{/if}}
                     {{#if thumbnails.length}}
                         <div>
                             {{#each thumbnails}}
@@ -22,15 +25,24 @@
                             {{/each}}
                         </div>
                     {{/if}}
-                    {{#unless status}}
-                        <span style="color: red; font-weight: bold;">No disponible</span>
-                    {{/unless}}
                 </div>
             {{/each}}
         </div>
     {{else}}
         <p>No hay productos disponibles en este momento.</p>
     {{/if}}
+</section>
+<section>
+    <h2>Agregar producto</h2>
+    <form action="/add-product" method="POST">
+        <input type="text" name="title" placeholder="Título" required>
+        <input type="text" name="description" placeholder="Descripción" required>
+        <input type="number" name="price" placeholder="Precio" required>
+        <input type="number" name="stock" placeholder="Stock" required>
+        <input type="text" name="category" placeholder="Categoría" required>
+        <input type="checkbox" name="onSale"> En oferta
+        <button type="submit">Agregar</button>
+    </form>
 </section>
 <footer class="final">
     <div class="menu-final">

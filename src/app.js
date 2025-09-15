@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const productsRouter = require('./routes/products.router.js');
 const cartsRouter = require('./routes/carts.router.js');
+const viewsRouter = require('./routes/views.router.js');
 const fs = require('fs');
 
 const app = express();
@@ -44,5 +45,8 @@ app.get('/', (req, res) => {
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Rutas
+app.use('/', viewsRouter);
 
 module.exports = app;
