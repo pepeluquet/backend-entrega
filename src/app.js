@@ -6,7 +6,7 @@ const cartsRouter = require('./routes/carts.router.js');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+// const PORT = 8080;
 
 // Handlebars setup
 app.engine('handlebars', exphbs.engine({
@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// Iniciar el servidor
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
+// Servir archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
+module.exports = app;
