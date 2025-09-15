@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.completo {
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.1fr 0.5fr 0.1fr 0.01fr;
+  grid-template-areas: "portada  portada  portada"
+                       "nucleo  nucleo  nucleo" 
+                       "nucleo  nucleo  nucleo" 
+                       " final   final   final";
+}
+
+.portada {
+  grid-area: portada;
+}
+
+.navbar {
+  position: sticky;
+  top: 0.1em;
+  display: flex;
+  justify-content: space-around;
+  height: 2.5em;
+  align-items: center;
+  background-color: #809671;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  flex-basis: auto;
+}
+.navbar ul a {
+  color: #809671;
+  text-decoration: overline;
+}
+.navbar li {
+  padding: 1.5em;
+}
+.navbar li a {
+  color: #f5f5dc;
+  text-decoration: overline;
+  font-weight: 650;
+}
+.navbar li .name {
+  color: #809671;
+  font-weight: 650;
+}
+
+.portada .titulo {
+  display: flex;
+  flex-direction: column;
+  background-color: #f8e1ce;
+  font-family: "monomakh";
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  height: 30em;
+}
+.portada .titulo h3 {
+  color: #2A2A24;
+  font-family: "system-ui";
+  text-align: center;
+  padding: 1em;
+  font-size: 1.8em;
+}
+
+.nucleo {
+  display: flex;
+  flex-direction: column;
+  grid-area: nucleo;
+  background-color: #f8e1ce;
+}
+.nucleo .subtitulos {
+  color: #2A2A24;
+  font-family: "Noto Sans";
+  text-align: center;
+  padding: 2.2em;
+  font-size: 1.7em;
+}
+
+
+.final {
+  grid-area: final;
+}
+.final .registro {
+  background-color: #809671;
+}
+.final .menu-final {
+  display: flex;
+  justify-content: space-around;
+  height: 2.5em;
+  align-items: center;
+  background-color: #809671;
+}
+.final .menu-final .link {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+.final .menu-final .link li {
+  padding: 1em;
+}
+.final .menu-final .link li a {
+  text-decoration: overline;
+  color: #f5f5dc;
+  font-weight: 650;
+}
+.final .menu-final .logo {
+  height: 2.5em;
+}

@@ -37,8 +37,8 @@ app.get('/', (req, res) => {
     }
     res.render('index', {
         title: 'Inicio',
-        mensaje: 'Bienvenido a la tienda!',
-        products
+        mensaje: 'InaYoga!',
+        products 
     });
 });
 

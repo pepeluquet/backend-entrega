@@ -1,20 +1,41 @@
 {{!-- Hereda de main.handlebars --}}
-<section>
-    <h2>{{mensaje}}</h2>
-    <p>Este es el contenido dinámico de la página principal.</p>
-
+<section class="portada">
+    <div class="titulo">
+        <h3 class="tracking-in-contract">InaYoga !!</h3>
+    </div>
+</section>
+<section class="nucleo">
+    <h2 class="subtitulos">Nuestros productos</h2>
     {{#if products.length}}
-        <ul>
+        <div class="articulos-lectura">
             {{#each products}}
-                <li style="{{#if oferta}}background: #ffeeba;{{/if}}">
-                    <strong>{{nombre}}</strong> - ${{precio}}
-                    {{#if oferta}}
-                        <span style="color: red; font-weight: bold;">En oferta!</span>
+                <div class="card articulo-info" style="margin-bottom: 1rem;">
+                    <h4>{{title}}</h4>
+                    <p>{{description}}</p>
+                    <p><strong>Precio:</strong> ${{price}}</p>
+                    <p><strong>Stock:</strong> {{stock}}</p>
+                    <p><strong>Categoría:</strong> {{category}}</p>
+                    {{#if thumbnails.length}}
+                        <div>
+                            {{#each thumbnails}}
+                                <img src="{{this}}" alt="Imagen de {{../title}}" style="max-width: 100px;">
+                            {{/each}}
+                        </div>
                     {{/if}}
-                </li>
+                    {{#unless status}}
+                        <span style="color: red; font-weight: bold;">No disponible</span>
+                    {{/unless}}
+                </div>
             {{/each}}
-        </ul>
+        </div>
     {{else}}
         <p>No hay productos disponibles en este momento.</p>
     {{/if}}
 </section>
+<footer class="final">
+    <div class="menu-final">
+        <ul class="link">
+            <li><a href="/">Inicio</a></li>
+        </ul>
+    </div>
+</footer>
