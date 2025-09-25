@@ -1,7 +1,7 @@
 const express = require('express');
 const CartDao = require('../dao/cart.dao.js');
-const CartService = require('../services/cart.service.js');
-const CartController = require('../controllers/cart.controller.js');
+const CartService = require('../services/cart.services.js');
+const CartController = require('../controllers/cart.controllers.js');
 
 const router = express.Router();
 const cartDao = new CartDao('data/carts.json');

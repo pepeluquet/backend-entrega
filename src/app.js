@@ -43,6 +43,18 @@ app.get('/', (req, res) => {
     });
 });
 
+// Ruta para renderizar realtimeProducts.handlebars
+app.get('/realtimeproducts', (req, res) => {
+    let products = [];
+    try {
+        const data = fs.readFileSync(productsPath, 'utf-8');
+        products = JSON.parse(data);
+    } catch (error) {
+        console.error('Error leyendo products.json:', error);
+    }
+    res.render('realtimeProducts', { products });
+});
+
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
