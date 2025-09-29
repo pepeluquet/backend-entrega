@@ -35,6 +35,16 @@ class productsControllers {
         }  
     }
 
+    createProductWithImages = async (req, res, thumbnails) => {
+        try {
+            const productData = { ...req.body, thumbnails };
+            const product = await this.productsServices.createProduct(productData);
+            res.status(201).json(product);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+
     updateProduct = async (req, res, next) => {
         try {
             const { id } = req.params

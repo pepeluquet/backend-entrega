@@ -57,6 +57,7 @@ app.get('/realtimeproducts', (req, res) => {
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, '../public/images')));
 
 // Rutas
 app.use('/', viewsRouter);
