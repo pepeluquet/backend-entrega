@@ -44,6 +44,46 @@
         <button type="submit">Agregar</button>
     </form>
 </section>
+<section>
+    <h2>Lista de productos</h2>
+    <ul>
+        {{#each products}}
+            <li>
+                <strong>{{title}}</strong> - ${{price}}
+                <button class="add-to-cart-btn" data-id="{{_id}}">Agregar al carrito</button>
+            </li>
+        {{/each}}
+    </ul>
+
+    <div>
+        {{#if prevLink}}
+            <a href="{{prevLink}}">Anterior</a>
+        {{/if}}
+        Página {{page}} de {{totalPages}}
+        {{#if nextLink}}
+            <a href="{{nextLink}}">Siguiente</a>
+        {{/if}}
+    </div>
+
+    <script>
+        // Suponiendo que tienes el ID del carrito en localStorage o en una variable global
+        const cartId = localStorage.getItem('cartId') || 'ID_DEL_CARRITO';
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const productId = btn.dataset.id;
+                const res = await fetch(`/api/carts/${cartId}/products/${productId}`, {
+                    method: 'POST'
+                });
+                if (res.ok) {
+                    alert('Producto agregado al carrito');
+                } else {
+                    alert('Error al agregar producto');
+                }
+            });
+        });
+    </script>
+</section>
 <footer class="final">
     <div class="menu-final">
         <ul class="link">

@@ -31,6 +31,27 @@ class CartService {
         await this.cartDao.saveCarts(carts);
         return cart;
     }
+
+    async getCartById(cartId) {
+        // Usa populate en el DAO
+        return await this.cartDao.getCartById(cartId);
+    }
+
+    async removeProductFromCart(cartId, productId) {
+        return await this.cartDao.removeProductFromCart(cartId, productId);
+    }
+
+    async replaceCartProducts(cartId, products) {
+        return await this.cartDao.replaceCartProducts(cartId, products);
+    }
+
+    async updateProductQuantity(cartId, productId, quantity) {
+        return await this.cartDao.updateProductQuantity(cartId, productId, quantity);
+    }
+
+    async clearCart(cartId) {
+        return await this.cartDao.clearCart(cartId);
+    }
 }
 
 module.exports = CartService;

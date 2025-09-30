@@ -1,29 +1,36 @@
 const express = require('express');
-const path = require('path');
-const fs = require('fs');
+const axios = require('axios');
 const router = express.Router();
 
-const productsPath = path.join(__dirname, '..', 'data', 'products.json');
-
-// Home: muestra productos
-router.get('/', (req, res) => {
-    let products = [];
+// Vista principal de productos paginados
+router.get('/', async (req, res) => {
+    const { page = 1, limit = 10, sort, category, status } = req.query;
     try {
-        const data = fs.readFileSync(productsPath, 'utf-8');
-        products = JSON.parse(data);
+        // Llama al endpoint paginado de productos
+        const { data } = await axios.get(`http://localhost:8080/api/products`, {
+            params: { page, limit, sort, category, status }
+        });
+        res.render('index', {
+            products: data.payload,
+            prevLink: data.prevLink,
+            nextLink: data.nextLink,
+            page: data.page,
+            totalPages: data.totalPages
+        });
     } catch (error) {
-        console.error('Error leyendo products.json:', error);
+        res.status(500).send('Error al obtener productos');
     }
-    res.render('home', {
-        title: 'Inicio',
-        products
-    });
 });
 
-// Formulario para agregar producto (solo ejemplo, no persistente)
-router.post('/add-product', (req, res) => {
-    // Aquí deberías agregar lógica para guardar el producto en products.json
-    res.redirect('/');
+// Vista detalle de carrito
+router.get('/carts/:cid', async (req, res) => {
+    const { cid } = req.params;
+    try {
+        const { data } = await axios.get(`http://localhost:8080/api/carts/${cid}`);
+        res.render('cartDetail', { products: data });
+    } catch (error) {
+        res.status(500).send('Error al obtener el carrito');
+    }
 });
 
 module.exports = router;

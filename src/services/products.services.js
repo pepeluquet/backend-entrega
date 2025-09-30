@@ -1,10 +1,24 @@
 class ProductServices {
     constructor(productsDao) {
-        this.productsDao = productsDao
+        this.productsDao = productsDao;
     }
 
-    async getAllProducts() {
-        return await this.productDao.getAll()
+    async getAllProducts({ limit = 10, page = 1, sort, query }) {
+        const filter = {};
+        if (query) {
+            // Permite filtrar por category o status
+            if (query.category) filter.category = query.category;
+            if (query.status !== undefined) filter.status = query.status === 'true';
+        }
+
+        const options = {
+            limit: parseInt(limit),
+            page: parseInt(page),
+            sort: sort ? { price: sort === 'asc' ? 1 : -1 } : undefined,
+            lean: true
+        };
+
+        return await this.productsDao.paginate(filter, options);
     }
 
 

@@ -1,0 +1,10 @@
+{{!-- filepath: src/views/cartDetail.handlebars --}}
+<h2>Detalle del carrito</h2>
+<ul>
+    {{#each products}}
+        <li>
+            <strong>{{this.product.title}}</strong> - ${{this.product.price}} <br>
+            Cantidad: {{this.quantity}}
+        </li>
+    {{/each}}
+</ul>

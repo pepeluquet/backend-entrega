@@ -29,19 +29,22 @@ class ProductDao {
         return crypto.randomUUID
     }
     async getAll(query = {}, options = {}) {
-        return ProductModel.paginate(query, options);
+        return await ProductModel.find(query, null, options);
     }
     async getById(id) {
-        return ProductModel.findById(id);
+        return await ProductModel.findById(id);
     }
     async create(productData) {
-        return ProductModel.create(productData);
+        return await ProductModel.create(productData);
     }
     async update(id, updateData) {
-        return ProductModel.findByIdAndUpdate(id, updateData, { new: true });
+        return await ProductModel.findByIdAndUpdate(id, updateData, { new: true });
     }
     async delete(id) {
-        return ProductModel.findByIdAndDelete(id);
+        return await ProductModel.findByIdAndDelete(id);
+    }
+    async paginate(filter, options) {
+        return await ProductModel.paginate(filter, options);
     }
 }
 

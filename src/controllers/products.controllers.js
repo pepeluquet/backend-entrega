@@ -1,16 +1,34 @@
-class productsControllers {
-    constructor(ProductsServices) {
-        this.ProductsServices = ProductsServices
+class ProductsControllers {
+    constructor(productsService) {
+        this.productsService = productsService;
     }
 
-    getAllProducts = async (req, res, next) => {
+    getAllProducts = async (req, res) => {
         try {
-            const products = await this.ProductsServices.getAllProducts()
-            resizeBy.json(products)
+            const { limit, page, sort, ...query } = req.query;
+            const result = await this.productsService.getAllProducts({ limit, page, sort, query });
+
+            // Construcción de links para paginación
+            const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}`;
+            const prevLink = result.hasPrevPage ? `${baseUrl}?page=${result.prevPage}&limit=${result.limit}` : null;
+            const nextLink = result.hasNextPage ? `${baseUrl}?page=${result.nextPage}&limit=${result.limit}` : null;
+
+            res.json({
+                status: 'success',
+                payload: result.docs,
+                totalPages: result.totalPages,
+                prevPage: result.prevPage,
+                nextPage: result.nextPage,
+                page: result.page,
+                hasPrevPage: result.hasPrevPage,
+                hasNextPage: result.hasNextPage,
+                prevLink,
+                nextLink
+            });
         } catch (error) {
-            netx(error)
+            res.status(500).json({ status: 'error', error: error.message });
         }
-    }
+    };
 
     getProductById = async (req, res, next) => {
         try {
@@ -70,5 +88,5 @@ class productsControllers {
     }
 }
 
-module.exports = productsControllers
+module.exports = ProductsControllers;
 
