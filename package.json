@@ -21,13 +21,11 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
-<<<<<<< HEAD
     "install": "^0.13.0",
-    "node": "^24.8.0",
-    "nvm": "^0.0.4",
-=======
+    "mongoose": "^8.18.3",
+    "mongoose-paginate-v2": "^1.9.1",
     "multer": "^2.0.2",
->>>>>>> fc04672aaea503c9c5c3fce356e1c75c499db661
+    "node": "^24.8.0",
     "socket.io": "^4.8.1"
   }
 }
