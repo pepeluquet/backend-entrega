@@ -4,12 +4,13 @@
         <h3 class="tracking-in-contract">InaYoga !!</h3>
     </div>
 </section>
+
 <section class="nucleo">
     <h2 class="subtitulos">Nuestros productos</h2>
     {{#if products.length}}
-        <div class="articulos-lectura">
+        <div class="articulos-lectura" style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
             {{#each products}}
-                <div class="card articulo-info" style="margin-bottom: 1rem;">
+                <div class="card articulo-info" style="width: 300px; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; box-shadow: 2px 2px 8px #eee;">
                     <h4>{{title}}</h4>
                     <p>{{description}}</p>
                     <p><strong>Precio:</strong> ${{price}}</p>
@@ -19,12 +20,13 @@
                         <span style="color: green; font-weight: bold;">¡En oferta!</span>
                     {{/if}}
                     {{#if thumbnails.length}}
-                        <div>
+                        <div style="margin: 0.5rem 0;">
                             {{#each thumbnails}}
-                                <img src="{{this}}" alt="Imagen de {{../title}}" style="max-width: 100px;">
+                                <img src="{{this}}" alt="Imagen de {{../title}}" style="max-width: 80px; border-radius: 4px;">
                             {{/each}}
                         </div>
                     {{/if}}
+                    <button class="add-to-cart-btn" data-id="{{_id}}" style="background: #4caf50; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">Agregar al carrito</button>
                 </div>
             {{/each}}
         </div>
@@ -32,58 +34,21 @@
         <p>No hay productos disponibles en este momento.</p>
     {{/if}}
 </section>
-<section>
-    <h2>Agregar producto</h2>
-    <form action="/add-product" method="POST">
-        <input type="text" name="title" placeholder="Título" required>
-        <input type="text" name="description" placeholder="Descripción" required>
-        <input type="number" name="price" placeholder="Precio" required>
-        <input type="number" name="stock" placeholder="Stock" required>
-        <input type="text" name="category" placeholder="Categoría" required>
-        <input type="checkbox" name="onSale"> En oferta
-        <button type="submit">Agregar</button>
-    </form>
-</section>
-<section>
-    <h2>Lista de productos</h2>
-    <ul>
-        {{#each products}}
-            <li>
-                <strong>{{title}}</strong> - ${{price}}
-                <button class="add-to-cart-btn" data-id="{{_id}}">Agregar al carrito</button>
-            </li>
-        {{/each}}
-    </ul>
 
-    <div>
-        {{#if prevLink}}
-            <a href="{{prevLink}}">Anterior</a>
-        {{/if}}
-        Página {{page}} de {{totalPages}}
-        {{#if nextLink}}
-            <a href="{{nextLink}}">Siguiente</a>
-        {{/if}}
-    </div>
+<div style="margin: 2rem 0; display: flex; justify-content: center; gap: 1rem;">
+    {{#if prevLink}}
+        <a href="{{prevLink}}" style="padding: 0.5rem 1rem; background: #2196f3; color: #fff; border-radius: 4px; text-decoration: none;">Anterior</a>
+    {{/if}}
+    <span style="align-self: center;">Página {{page}} de {{totalPages}}</span>
+    {{#if nextLink}}
+        <a href="{{nextLink}}" style="padding: 0.5rem 1rem; background: #2196f3; color: #fff; border-radius: 4px; text-decoration: none;">Siguiente</a>
+    {{/if}}
+</div>
 
-    <script>
-        // Suponiendo que tienes el ID del carrito en localStorage o en una variable global
-        const cartId = localStorage.getItem('cartId') || 'ID_DEL_CARRITO';
+<div style="text-align: center; margin-bottom: 2rem;">
+    <a href="/carts/{{cartId}}" style="padding: 0.7rem 1.5rem; background: #ff9800; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold;">Ir al carrito</a>
+</div>
 
-        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-            btn.addEventListener('click', async () => {
-                const productId = btn.dataset.id;
-                const res = await fetch(`/api/carts/${cartId}/products/${productId}`, {
-                    method: 'POST'
-                });
-                if (res.ok) {
-                    alert('Producto agregado al carrito');
-                } else {
-                    alert('Error al agregar producto');
-                }
-            });
-        });
-    </script>
-</section>
 <footer class="final">
     <div class="menu-final">
         <ul class="link">
@@ -91,3 +56,29 @@
         </ul>
     </div>
 </footer>
+
+<script>
+    // Suponiendo que tienes el ID del carrito en localStorage o en una variable global
+    let cartId = localStorage.getItem('cartId');
+    if (!cartId) {
+        // Si no existe, podrías crear uno automáticamente o pedir al usuario que lo cree
+        cartId = 'ID_DEL_CARRITO'; // Reemplaza por lógica real si lo deseas
+        localStorage.setItem('cartId', cartId);
+    }
+    // Actualiza el enlace del botón "Ir al carrito"
+    document.querySelectorAll('a[href^="/carts/"]').forEach(a => a.href = `/carts/${cartId}`);
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const productId = btn.dataset.id;
+            const res = await fetch(`/api/carts/${cartId}/products/${productId}`, {
+                method: 'POST'
+            });
+            if (res.ok) {
+                alert('Producto agregado al carrito');
+            } else {
+                alert('Error al agregar producto');
+            }
+        });
+    });
+</script>
