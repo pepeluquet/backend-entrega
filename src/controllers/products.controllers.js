@@ -5,14 +5,34 @@ class ProductsControllers {
 
     getAllProducts = async (req, res) => {
         try {
-            const { limit, page, sort, ...query } = req.query;
-            const result = await this.productsService.getAllProducts({ limit, page, sort, query });
+            const { limit = 10, page = 1, sort, query } = req.query;
+            const filter = {};
 
-            // Construcción de links para paginación
-            // const baseUrl = '/';
-            // const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}`;
-            const prevLink = result.hasPrevPage ? `/?page=${result.prevPage}&limit=${limit}` : null;
-            const nextLink = result.hasNextPage ? `/?page=${result.nextPage}&limit=${limit}` : null;
+            // Filtro por categoría o status
+            if (query) {
+                if (query === 'true' || query === 'false') {
+                    filter.status = query === 'true';
+                } else {
+                    filter.category = query;
+                }
+            }
+
+            // Opciones de paginación y ordenamiento
+            const options = {
+                page: parseInt(page),
+                limit: parseInt(limit),
+                lean: true
+            };
+            if (sort) {
+                options.sort = { price: sort === 'asc' ? 1 : -1 };
+            }
+
+            const result = await this.productsService.getAllProducts(filter, options);
+
+            // Construcción de links
+            const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}`;
+            const prevLink = result.hasPrevPage ? `${baseUrl}?page=${result.prevPage}&limit=${limit}` : null;
+            const nextLink = result.hasNextPage ? `${baseUrl}?page=${result.nextPage}&limit=${limit}` : null;
 
             res.json({
                 status: 'success',

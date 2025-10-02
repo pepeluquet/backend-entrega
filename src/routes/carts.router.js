@@ -16,9 +16,5 @@ router.get('/:cid', cartController.getCartProducts);
 
 // POST /api/carts/:cid/product/:pid
 router.post('/:cid/product/:pid', cartController.addProductToCart);
-router.delete('/:cid/products/:pid', cartController.deleteProductFromCart);
-router.put('/:cid', cartController.replaceCartProducts);
-router.put('/:cid/products/:pid', cartController.updateProductQuantity);
-router.delete('/:cid', cartController.clearCart);
 
 module.exports = router;

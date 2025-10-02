@@ -18,7 +18,7 @@ class ProductServices {
             lean: true
         };
 
-        return await this.productsDao.paginate(filter, options);
+        return await this.productsDao.getAll(filter, options);
     }
 
 

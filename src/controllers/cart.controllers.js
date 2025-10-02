@@ -27,14 +27,13 @@ class CartController {
     addProductToCart = async (req, res) => {
         const { cid, pid } = req.params;
         try {
-            const cart = await this.cartService.addProductToCart(cid, pid);
-            if (cart) {
-                res.json(cart);
-            } else {
-                res.status(404).json({ error: 'Carrito no encontrado' });
+            const updatedCart = await this.cartService.addProductToCart(cid, pid);
+            if (!updatedCart) {
+                return res.status(404).json({ status: 'error', message: 'Carrito o producto no encontrado' });
             }
-        } catch {
-            res.status(500).json({ error: 'Error al agregar producto al carrito' });
+            res.json({ status: 'success', cart: updatedCart });
+        } catch (error) {
+            res.status(500).json({ status: 'error', error: error.message });
         }
     };
 

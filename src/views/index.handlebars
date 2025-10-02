@@ -45,7 +45,7 @@
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
-    <a href="/carts/{{cartId}}" style="padding: 0.7rem 1.5rem; background: #ff9800; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold;">Ir al carrito</a>
+    <button id="go-to-cart" style="display:none; padding: 0.7rem 1.5rem; background: #ff9800; color: #fff; border-radius: 4px; text-decoration: none; font-weight: bold;">Ir al carrito</button>
 </div>
 
 <footer class="final">
@@ -57,29 +57,53 @@
 </footer>
 
 <script>
-    // Suponiendo que tienes el ID del carrito en localStorage o en una variable global
     let cartId = localStorage.getItem('cartId');
-    if (!cartId) {
-        // Crea el carrito en el backend
-        fetch('/api/carts', { method: 'POST' })
-            .then(res => res.json())
-            .then(data => {
-                cartId = data._id || data.id; // depende de tu modelo
-                localStorage.setItem('cartId', cartId);
-                document.querySelectorAll('a[href^="/carts/"]').forEach(a => a.href = `/carts/${cartId}`);
-            });
-    } else {
-        document.querySelectorAll('a[href^="/carts/"]').forEach(a => a.href = `/carts/${cartId}`);
+    const goToCartBtn = document.getElementById('go-to-cart');
+
+    function showGoToCartBtn() {
+        if (goToCartBtn && cartId) {
+            goToCartBtn.style.display = 'inline-block';
+        }
     }
+
+    function goToCart() {
+        if (cartId) window.location.href = `/carts/${cartId}`;
+    }
+
+    async function ensureCart() {
+        if (!cartId) {
+            const res = await fetch('/api/carts', { method: 'POST' });
+            const data = await res.json();
+            cartId = data._id || data.id || (data.cart && (data.cart._id || data.cart.id));
+            if (cartId) {
+                localStorage.setItem('cartId', cartId);
+                showGoToCartBtn();
+            }
+        } else {
+            showGoToCartBtn();
+        }
+    }
+
+    if (goToCartBtn) {
+        goToCartBtn.addEventListener('click', goToCart);
+    }
+
+    ensureCart();
 
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
+            await ensureCart();
+            if (!cartId) {
+                alert('No se pudo crear el carrito.');
+                return;
+            }
             const productId = btn.dataset.id;
             const res = await fetch(`/api/carts/${cartId}/product/${productId}`, {
                 method: 'POST'
             });
             if (res.ok) {
                 alert('Producto agregado al carrito');
+                showGoToCartBtn();
             } else {
                 alert('Error al agregar producto');
             }
