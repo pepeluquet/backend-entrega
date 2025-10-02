@@ -1,143 +1,143 @@
-[
-  {
-    "id": "6732a3f7-9c98-4b72-9e8c-5f8f8b34f71a",
-    "title": "Chaqueta de Viento Ultra-Ligera",
-    "description": "Chaqueta rompevientos de nylon ultraligero, ideal para días ventosos y carreras de larga distancia. Se pliega fácilmente en su propio bolsillo.",
-    "code": "CWDV-UL-001",
-    "price": 89.99,
-    "status": true,
-    "stock": 45,
-    "category": "Chaquetas",
-    "thumbnails": [
-      "/images/chaqueta_viento_frente.jpg",
-      "/images/chaqueta_viento_espalda.jpg",
-      "/images/chaqueta_viento_plegada.jpg"
-    ]
-  },
-  {
-    "id": "78b4c5d8-0f1e-4a2e-8c6f-3b5b6d7c8e9f",
-    "title": "Pantalón Corto de Trail 2-en-1",
-    "description": "Pantalón corto con malla interior de compresión para reducir la fatiga muscular. Con varios bolsillos de malla para geles y barritas.",
-    "code": "PC2E1-TR-002",
-    "price": 54.5,
-    "status": true,
-    "stock": 78,
-    "category": "Pantalones",
-    "thumbnails": [
-      "/images/pantalon_corto_delantero.jpg",
-      "/images/pantalon_corto_lateral.jpg"
-    ]
-  },
-  {
-    "id": "90a1b2c3-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
-    "title": "Camiseta Técnica de Secado Rápido",
-    "description": "Camiseta de tejido técnico que absorbe la humedad y se seca rápidamente. Costuras planas para evitar rozaduras.",
-    "code": "CT-SR-003",
-    "price": 32.99,
-    "status": true,
-    "stock": 120,
-    "category": "Camisetas",
-    "thumbnails": [
-      "/images/camiseta_tecnica_frente.jpg",
-      "/images/camiseta_tecnica_espalda.jpg"
-    ]
-  },
-  {
-    "id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
-    "title": "Calcetines de Compresión para Trail",
-    "description": "Calcetines de compresión graduada que mejoran la circulación y reducen el riesgo de ampollas. Con zonas acolchadas en talón y puntera.",
-    "code": "CCT-PR-004",
-    "price": 19.95,
-    "status": true,
-    "stock": 95,
-    "category": "Calcetines",
-    "thumbnails": [
-      "/images/calcetines_compresion_par.jpg",
-      "/images/calcetines_compresion_zoom.jpg"
-    ]
-  },
-  {
-    "id": "b2c3d4e5-f6a7-b8c9-d0e1-f2a3b4c5d6e7",
-    "title": "Gorra de Trail Plegable",
-    "description": "Gorra ligera y plegable para protección solar. Con banda interior de secado rápido y ventilación de malla en los laterales.",
-    "code": "GTP-PL-005",
-    "price": 25,
-    "status": true,
-    "stock": 60,
-    "category": "Accesorios",
-    "thumbnails": [
-      "/images/gorra_trail_frente.jpg",
-      "/images/gorra_trail_plegada.jpg"
-    ]
-  },
-  {
-    "id": "c3d4e5f6-a7b8-c9d0-e1f2-a3b4c5d6e7f8",
-    "title": "Mochila de Hidratación Ligera 10L",
-    "description": "Mochila de trail running con capacidad de 10 litros. Incluye un compartimento para bolsa de hidratación, múltiples bolsillos frontales y laterales, y es muy ligera y ergonómica.",
-    "code": "MHL-10L-006",
-    "price": 99.99,
-    "status": true,
-    "stock": 30,
-    "category": "Mochilas",
-    "thumbnails": [
-      "/images/mochila_hidratacion_frente.jpg",
-      "/images/mochila_hidratacion_lateral.jpg"
-    ]
-  },
-  {
-    "id": "d4e5f6a7-b8c9-d0e1-f2a3-b4c5d6e7f8a9",
-    "title": "Banda para la Cabeza con Visera",
-    "description": "Banda absorbente para el sudor con visera plegable para protección solar. Tejido transpirable y de secado rápido, ideal para mantener la cabeza fresca.",
-    "code": "BVC-TS-007",
-    "price": 15.5,
-    "status": true,
-    "stock": 150,
-    "category": "Accesorios",
-    "thumbnails": [
-      "/images/banda_visera_frente.jpg",
-      "/images/banda_visera_perfil.jpg"
-    ]
-  },
-  {
-    "id": "e5f6a7b8-c9d0-e1f2-a3b4-c5d6e7f8a9b0",
-    "title": "Guantes de Trail de Secado Rápido",
-    "description": "Guantes ligeros y transpirables con capacidad táctil en los dedos. Ofrecen protección contra el frío y la humedad, con un diseño ajustado para un agarre firme.",
-    "code": "GTR-SR-008",
-    "price": 22,
-    "status": true,
-    "stock": 85,
-    "category": "Guantes",
-    "thumbnails": [
-      "/images/guantes_trail_frente.jpg",
-      "/images/guantes_trail_palma.jpg"
-    ]
-  },
-  {
-    "id": "f6a7b8c9-d0e1-f2a3-b4c5-d6e7f8a9b0c1",
-    "title": "Polainas Protectoras de Tobillo",
-    "description": "Polainas diseñadas para evitar la entrada de tierra, piedras y escombros en los zapatos de trail running. Con un ajuste elástico y un gancho para sujetarlas al calzado.",
-    "code": "PPT-GT-009",
-    "price": 29.99,
-    "status": true,
-    "stock": 55,
-    "category": "Accesorios",
-    "thumbnails": [
-      "/images/polainas_protectoras_lateral.jpg",
-      "/images/polainas_protectoras_zoom.jpg"
-    ]
-  },
-  {
-    "id": "a7b8c9d0-e1f2-a3b4-c5d6-e7f8a9b0c1d2",
-    "title": "Pantalón de Compresión de 3/4",
-    "description": "Pantalón de compresión para trail running de 3/4. Sujeta los músculos de la parte superior de las piernas, reduciendo la vibración muscular y mejorando la recuperación.",
-    "code": "PC34-TR-010",
-    "price": 75,
-    "status": true,
-    "stock": 65,
-    "category": "Pantalones",
-    "thumbnails": [
-      "/images/pantalon_compresion_frente.jpg",
-      "/images/pantalon_compresion_lateral.jpg"
-    ]
-  }
-]
+// [
+//   {
+//     "id": "6732a3f7-9c98-4b72-9e8c-5f8f8b34f71a",
+//     "title": "Chaqueta de Viento Ultra-Ligera",
+//     "description": "Chaqueta rompevientos de nylon ultraligero, ideal para días ventosos y carreras de larga distancia. Se pliega fácilmente en su propio bolsillo.",
+//     "code": "CWDV-UL-001",
+//     "price": 89.99,
+//     "status": true,
+//     "stock": 45,
+//     "category": "Chaquetas",
+//     "thumbnails": [
+//       "/images/chaqueta_viento_frente.jpg",
+//       "/images/chaqueta_viento_espalda.jpg",
+//       "/images/chaqueta_viento_plegada.jpg"
+//     ]
+//   },
+//   {
+//     "id": "78b4c5d8-0f1e-4a2e-8c6f-3b5b6d7c8e9f",
+//     "title": "Pantalón Corto de Trail 2-en-1",
+//     "description": "Pantalón corto con malla interior de compresión para reducir la fatiga muscular. Con varios bolsillos de malla para geles y barritas.",
+//     "code": "PC2E1-TR-002",
+//     "price": 54.5,
+//     "status": true,
+//     "stock": 78,
+//     "category": "Pantalones",
+//     "thumbnails": [
+//       "/images/pantalon_corto_delantero.jpg",
+//       "/images/pantalon_corto_lateral.jpg"
+//     ]
+//   },
+//   {
+//     "id": "90a1b2c3-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
+//     "title": "Camiseta Técnica de Secado Rápido",
+//     "description": "Camiseta de tejido técnico que absorbe la humedad y se seca rápidamente. Costuras planas para evitar rozaduras.",
+//     "code": "CT-SR-003",
+//     "price": 32.99,
+//     "status": true,
+//     "stock": 120,
+//     "category": "Camisetas",
+//     "thumbnails": [
+//       "/images/camiseta_tecnica_frente.jpg",
+//       "/images/camiseta_tecnica_espalda.jpg"
+//     ]
+//   },
+//   {
+//     "id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+//     "title": "Calcetines de Compresión para Trail",
+//     "description": "Calcetines de compresión graduada que mejoran la circulación y reducen el riesgo de ampollas. Con zonas acolchadas en talón y puntera.",
+//     "code": "CCT-PR-004",
+//     "price": 19.95,
+//     "status": true,
+//     "stock": 95,
+//     "category": "Calcetines",
+//     "thumbnails": [
+//       "/images/calcetines_compresion_par.jpg",
+//       "/images/calcetines_compresion_zoom.jpg"
+//     ]
+//   },
+//   {
+//     "id": "b2c3d4e5-f6a7-b8c9-d0e1-f2a3b4c5d6e7",
+//     "title": "Gorra de Trail Plegable",
+//     "description": "Gorra ligera y plegable para protección solar. Con banda interior de secado rápido y ventilación de malla en los laterales.",
+//     "code": "GTP-PL-005",
+//     "price": 25,
+//     "status": true,
+//     "stock": 60,
+//     "category": "Accesorios",
+//     "thumbnails": [
+//       "/images/gorra_trail_frente.jpg",
+//       "/images/gorra_trail_plegada.jpg"
+//     ]
+//   },
+//   {
+//     "id": "c3d4e5f6-a7b8-c9d0-e1f2-a3b4c5d6e7f8",
+//     "title": "Mochila de Hidratación Ligera 10L",
+//     "description": "Mochila de trail running con capacidad de 10 litros. Incluye un compartimento para bolsa de hidratación, múltiples bolsillos frontales y laterales, y es muy ligera y ergonómica.",
+//     "code": "MHL-10L-006",
+//     "price": 99.99,
+//     "status": true,
+//     "stock": 30,
+//     "category": "Mochilas",
+//     "thumbnails": [
+//       "/images/mochila_hidratacion_frente.jpg",
+//       "/images/mochila_hidratacion_lateral.jpg"
+//     ]
+//   },
+//   {
+//     "id": "d4e5f6a7-b8c9-d0e1-f2a3-b4c5d6e7f8a9",
+//     "title": "Banda para la Cabeza con Visera",
+//     "description": "Banda absorbente para el sudor con visera plegable para protección solar. Tejido transpirable y de secado rápido, ideal para mantener la cabeza fresca.",
+//     "code": "BVC-TS-007",
+//     "price": 15.5,
+//     "status": true,
+//     "stock": 150,
+//     "category": "Accesorios",
+//     "thumbnails": [
+//       "/images/banda_visera_frente.jpg",
+//       "/images/banda_visera_perfil.jpg"
+//     ]
+//   },
+//   {
+//     "id": "e5f6a7b8-c9d0-e1f2-a3b4-c5d6e7f8a9b0",
+//     "title": "Guantes de Trail de Secado Rápido",
+//     "description": "Guantes ligeros y transpirables con capacidad táctil en los dedos. Ofrecen protección contra el frío y la humedad, con un diseño ajustado para un agarre firme.",
+//     "code": "GTR-SR-008",
+//     "price": 22,
+//     "status": true,
+//     "stock": 85,
+//     "category": "Guantes",
+//     "thumbnails": [
+//       "/images/guantes_trail_frente.jpg",
+//       "/images/guantes_trail_palma.jpg"
+//     ]
+//   },
+//   {
+//     "id": "f6a7b8c9-d0e1-f2a3-b4c5-d6e7f8a9b0c1",
+//     "title": "Polainas Protectoras de Tobillo",
+//     "description": "Polainas diseñadas para evitar la entrada de tierra, piedras y escombros en los zapatos de trail running. Con un ajuste elástico y un gancho para sujetarlas al calzado.",
+//     "code": "PPT-GT-009",
+//     "price": 29.99,
+//     "status": true,
+//     "stock": 55,
+//     "category": "Accesorios",
+//     "thumbnails": [
+//       "/images/polainas_protectoras_lateral.jpg",
+//       "/images/polainas_protectoras_zoom.jpg"
+//     ]
+//   },
+//   {
+//     "id": "a7b8c9d0-e1f2-a3b4-c5d6-e7f8a9b0c1d2",
+//     "title": "Pantalón de Compresión de 3/4",
+//     "description": "Pantalón de compresión para trail running de 3/4. Sujeta los músculos de la parte superior de las piernas, reduciendo la vibración muscular y mejorando la recuperación.",
+//     "code": "PC34-TR-010",
+//     "price": 75,
+//     "status": true,
+//     "stock": 65,
+//     "category": "Pantalones",
+//     "thumbnails": [
+//       "/images/pantalon_compresion_frente.jpg",
+//       "/images/pantalon_compresion_lateral.jpg"
+//     ]
+//   }
+// ]

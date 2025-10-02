@@ -9,9 +9,10 @@ class ProductsControllers {
             const result = await this.productsService.getAllProducts({ limit, page, sort, query });
 
             // Construcción de links para paginación
-            const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}`;
-            const prevLink = result.hasPrevPage ? `${baseUrl}?page=${result.prevPage}&limit=${result.limit}` : null;
-            const nextLink = result.hasNextPage ? `${baseUrl}?page=${result.nextPage}&limit=${result.limit}` : null;
+            // const baseUrl = '/';
+            // const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}${req.path}`;
+            const prevLink = result.hasPrevPage ? `/?page=${result.prevPage}&limit=${limit}` : null;
+            const nextLink = result.hasNextPage ? `/?page=${result.nextPage}&limit=${limit}` : null;
 
             res.json({
                 status: 'success',
