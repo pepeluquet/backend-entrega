@@ -29,35 +29,35 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 
-const productsPath = path.join(__dirname, 'data', 'products.json');
+// const productsPath = path.join(__dirname, 'data', 'products.json');
 
 // Ruta para renderizar index.handlebars
-app.get('/', (req, res) => {
-    let products = [];
-    try {
-        const data = fs.readFileSync(productsPath, 'utf-8');
-        products = JSON.parse(data);
-    } catch (error) {
-        console.error('Error leyendo products.json:', error);
-    }
-    res.render('index', {
-        title: 'Inicio',
-        mensaje: 'InaYoga!',
-        products 
-    });
-});
+// app.get('/', (req, res) => {
+//     let products = [];
+//     try {
+//         const data = fs.readFileSync(productsPath, 'utf-8');
+//         products = JSON.parse(data);
+//     } catch (error) {
+//         console.error('Error leyendo products.json:', error);
+//     }
+//     res.render('index', {
+//         title: 'Inicio',
+//         mensaje: 'InaYoga!',
+//         products 
+//     });
+// });
 
 // Ruta para renderizar realtimeProducts.handlebars
-app.get('/realtimeproducts', (req, res) => {
-    let products = [];
-    try {
-        const data = fs.readFileSync(productsPath, 'utf-8');
-        products = JSON.parse(data);
-    } catch (error) {
-        console.error('Error leyendo products.json:', error);
-    }
-    res.render('realtimeProducts', { products });
-});
+// app.get('/realtimeproducts', (req, res) => {
+//     let products = [];
+//     try {
+//         const data = fs.readFileSync(productsPath, 'utf-8');
+//         products = JSON.parse(data);
+//     } catch (error) {
+//         console.error('Error leyendo products.json:', error);
+//     }
+//     res.render('realtimeProducts', { products });
+// });
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));

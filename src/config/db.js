@@ -7,7 +7,8 @@ const connectDB = async () => {
     try {
         await mongoose.connect(MONGO_URL, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            dbName: 'InaYoga'
         });
         console.log('Conectado a MongoDB Atlas');
     } catch (err) {

@@ -1,4 +1,4 @@
-const fs = require('fs').promises
+// const fs = require('fs').promises
 const crypto = require("crypto")
 const ProductModel = require('../models/product.model.js');
 
@@ -7,24 +7,24 @@ class ProductDao {
         this.filePath = filePath
     }
 
-    async #readFile() {
-        try {
-            const data = await fs.readFile(this.filePath, 'utf8')
-            return JSON.parse(data)
-        } catch (error) {
-            if (error.code === 'ENOENT') {
-                return []
-            }
-            throw new Error('Error al leer el archivo de productos')
-        }
-    }
-    async #writeFile(data) {
-        try {
-            await fs.writeFile(this.filePath, JSON.stringify(data, null, 2))
-        } catch (error) {
-            throw new Error('Error al escribir en el archivo de productos')
-        }
-    }
+    // async #readFile() {
+    //     try {
+    //         const data = await fs.readFile(this.filePath, 'utf8')
+    //         return JSON.parse(data)
+    //     } catch (error) {
+    //         if (error.code === 'ENOENT') {
+    //             return []
+    //         }
+    //         throw new Error('Error al leer el archivo de productos')
+    //     }
+    // }
+    // async #writeFile(data) {
+    //     try {
+    //         await fs.writeFile(this.filePath, JSON.stringify(data, null, 2))
+    //     } catch (error) {
+    //         throw new Error('Error al escribir en el archivo de productos')
+    //     }
+    // }
     #generateId() {
         return crypto.randomUUID
     }

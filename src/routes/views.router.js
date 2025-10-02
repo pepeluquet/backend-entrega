@@ -1,6 +1,9 @@
 const express = require('express');
+const ProductDao = require('../dao/products.dao.js');
 const axios = require('axios');
 const router = express.Router();
+
+const productDao = new ProductDao();
 
 // Vista principal de productos paginados
 router.get('/', async (req, res) => {
