@@ -60,12 +60,17 @@
     // Suponiendo que tienes el ID del carrito en localStorage o en una variable global
     let cartId = localStorage.getItem('cartId');
     if (!cartId) {
-        // Si no existe, podrías crear uno automáticamente o pedir al usuario que lo cree
-        cartId = 'ID_DEL_CARRITO'; // Reemplaza por lógica real si lo deseas
-        localStorage.setItem('cartId', cartId);
+        // Crea el carrito en el backend
+        fetch('/api/carts', { method: 'POST' })
+            .then(res => res.json())
+            .then(data => {
+                cartId = data._id || data.id; // depende de tu modelo
+                localStorage.setItem('cartId', cartId);
+                document.querySelectorAll('a[href^="/carts/"]').forEach(a => a.href = `/carts/${cartId}`);
+            });
+    } else {
+        document.querySelectorAll('a[href^="/carts/"]').forEach(a => a.href = `/carts/${cartId}`);
     }
-    // Actualiza el enlace del botón "Ir al carrito"
-    document.querySelectorAll('a[href^="/carts/"]').forEach(a => a.href = `/carts/${cartId}`);
 
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', async () => {

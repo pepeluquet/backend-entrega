@@ -1,11 +1,11 @@
-const fs = require('fs').promises;
-const path = require('path');
+// const fs = require('fs').promises;
+// const path = require('path');
 const CartModel = require('../models/cart.model.js');
 
 class CartDao {
-    constructor(filePath) {
-        this.filePath = path.resolve(__dirname, '..', filePath);
-    }
+    // constructor(filePath) {
+    //     this.filePath = path.resolve(__dirname, '..', filePath);
+    // }
 
     async createCart() {
         const newCart = await CartModel.create({ products: [] });

@@ -4,7 +4,7 @@ const CartService = require('../services/cart.services.js');
 const CartController = require('../controllers/cart.controllers.js');
 
 const router = express.Router();
-const cartDao = new CartDao('data/carts.json');
+const cartDao = new CartDao();
 const cartService = new CartService(cartDao);
 const cartController = new CartController(cartService);
 
