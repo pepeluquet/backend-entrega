@@ -14,10 +14,13 @@ const PORT = 8080;
 connectDB();
 
 // Handlebars setup
-app.engine('handlebars', exphbs.engine({
-    defaultLayout: 'main',
-    layoutsDir: path.join(__dirname, 'views', 'layouts')
-}));
+const hbs = exphbs.create({
+    helpers: {
+        eq: (a, b) => a == b
+    }
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 

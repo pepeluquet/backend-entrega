@@ -6,6 +6,33 @@
 
 <section class="nucleo">
     <h2 class="subtitulos">Nuestros productos</h2>
+    <form method="get" style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <label>
+            Categoría:
+            <input type="text" name="query" placeholder="Ej: Accesorios" value="{{query}}">
+        </label>
+        <label>
+            Disponibilidad:
+            <select name="query">
+                <option value="">Todas</option>
+                <option value="true" {{#if (eq query "true")}}selected{{/if}}>Disponible</option>
+                <option value="false" {{#if (eq query "false")}}selected{{/if}}>No disponible</option>
+            </select>
+        </label>
+        <label>
+            Ordenar por precio:
+            <select name="sort">
+                <option value="">Sin orden</option>
+                <option value="asc" {{#if (eq sort "asc")}}selected{{/if}}>Ascendente</option>
+                <option value="desc" {{#if (eq sort "desc")}}selected{{/if}}>Descendente</option>
+            </select>
+        </label>
+        <label>
+            Productos por página:
+            <input type="number" name="limit" min="1" max="100" value="{{limit}}">
+        </label>
+        <button type="submit">Filtrar</button>
+    </form>
     {{#if products.length}}
         <div class="articulos-lectura" style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
             {{#each products}}

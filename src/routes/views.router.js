@@ -8,32 +8,49 @@ const cartDao = new CartDao();
 
 // Vista principal de productos paginados
 router.get('/', async (req, res) => {
-    const { page = 1, limit = 10, sort, query } = req.query;
+    // Obtiene los query params con valores por defecto
+    const { limit = 10, page = 1, sort, query } = req.query;
+
+    // Construye el filtro
     const filter = {};
     if (query) {
-        if (query === 'true' || query === 'false') filter.status = query === 'true';
-        else filter.category = query;
+        // Si query es 'true' o 'false', filtra por status
+        if (query === 'true' || query === 'false') {
+            filter.status = query === 'true';
+        } else {
+            // Si no, filtra por categoría
+            filter.category = query;
+        }
     }
+
+    // Opciones de paginación y ordenamiento
     const options = {
         page: parseInt(page),
         limit: parseInt(limit),
-        sort: sort ? { price: sort === 'asc' ? 1 : -1 } : undefined,
         lean: true
     };
-    const result = await productDao.getAll(filter, options);
+    if (sort) {
+        options.sort = { price: sort === 'asc' ? 1 : -1 };
+    }
 
-    // Links para la vista
-    const baseUrl = '/';
-    const prevLink = result.hasPrevPage ? `${baseUrl}?page=${result.prevPage}&limit=${limit}` : null;
-    const nextLink = result.hasNextPage ? `${baseUrl}?page=${result.nextPage}&limit=${limit}` : null;
+    try {
+        const result = await productDao.getAll(filter, options);
 
-    res.render('index', {
-        products: result.docs,
-        prevLink,
-        nextLink,
-        page: result.page,
-        totalPages: result.totalPages
-    });
+        // Links para la vista
+        const baseUrl = '/';
+        const prevLink = result.hasPrevPage ? `${baseUrl}?page=${result.prevPage}&limit=${limit}${sort ? `&sort=${sort}` : ''}${query ? `&query=${query}` : ''}` : null;
+        const nextLink = result.hasNextPage ? `${baseUrl}?page=${result.nextPage}&limit=${limit}${sort ? `&sort=${sort}` : ''}${query ? `&query=${query}` : ''}` : null;
+
+        res.render('index', {
+            products: result.docs,
+            prevLink,
+            nextLink,
+            page: result.page,
+            totalPages: result.totalPages
+        });
+    } catch (error) {
+        res.status(500).send('Error al obtener productos');
+    }
 });
 
 router.get('/carts/:cid', async (req, res) => {
